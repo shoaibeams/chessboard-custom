@@ -1,16 +1,17 @@
 import React from 'react'
 import { Square } from './Square'
+import { v4 as uuidv4 } from 'uuid'
 import '../index.css'
 import { isEven } from '../helpers/utils'
-import bottomSide from '../pieces/bottomSide'
+import bottomSide from '../pieces/CircularPiece'
 
 const Board = props => {
   const renderSquare = (i, squareShade, boardSize) => {
-    console.log('object', i, props.squares[i])
+    const squareToRender = props.squares[i]
 
-    if (props.squares[i]) {
-      props.squares[i].style = {
-        ...props.squares[i].style,
+    if (squareToRender) {
+      squareToRender.style = {
+        ...squareToRender.style,
         width: `${boardSize}px`,
         height: `${boardSize}px`
       }
@@ -25,6 +26,7 @@ const Board = props => {
 
     return (
       <Square
+        key={uuidv4()}
         piece={props.squares[i]}
         style={props.squares[i] ? props.squares[i].style : null}
         shade={squareShade}
@@ -41,21 +43,22 @@ const Board = props => {
         (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j))
           ? 'light-square'
           : 'dark-square'
-
-      // if (squareRows[i]) {
-      //   console.log('squareRows', squareRows[i].props)
-      //   squareRows[i].props.style = {
-      //     ...squareRows[i].props.style,
-      //     width: `20px`,
-      //     height: `20px`
-      //   }
-      // }
       squareRows.push(renderSquare(i * 8 + j, squareShade, props.boardSize))
     }
-    board.push(<div className="board-row">{squareRows}</div>)
+    board.push(
+      <div className="board-row" key={uuidv4()}>
+        {squareRows}
+      </div>
+    )
   }
 
-  return <div>{board}</div>
+  return (
+    <div className="game">
+      <div className="game-board">
+        <div>{board}</div>
+      </div>
+    </div>
+  )
 }
 
 export default Board

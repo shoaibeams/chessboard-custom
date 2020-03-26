@@ -1,8 +1,7 @@
 import Piece from './piece.js'
 
-export default class bottomSide extends Piece {
+export default class CircularPiece extends Piece {
   constructor(player, color, shape) {
-    console.log(`${color}-${shape}.png`);
     super(
       player,
       player === 1 ? `${color}-${shape}.png` : `${color}-${shape}.png`

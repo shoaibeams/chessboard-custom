@@ -1,12 +1,12 @@
 import React from 'react'
 import '../index.css'
 
-export const Square = props => {
+export const Square = ({ shade, onClick, style }) => {
   return (
     <button
-      className={'square ' + props.shade}
-      onClick={props.onClick}
-      style={props.style}
+      className={'square ' + shade}
+      onClick={onClick}
+      style={style}
     ></button>
   )
 }

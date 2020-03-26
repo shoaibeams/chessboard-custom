@@ -1,5 +1,4 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
   background-color: #ECECEA;
 }
@@ -61,8 +60,8 @@ ul {
 .icons-attribution,
 .game-status,
 .fallen-soldier-block {
-  margin-top: 20px;
-  min-height: 50px;
+  margin-top: 10px;
+  min-height: 30px;
 }
 
 
